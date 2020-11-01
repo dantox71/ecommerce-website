@@ -11,13 +11,13 @@ import {CollectionsOverviewContainer} from './collections-overview.styles.jsx';
 
 
 const CollectionsOverview = ({collections}) => (
-   <CollectionPreview>
+   <CollectionsOverviewContainer>
       {
                   collections.map(({id,...otherCollectionsProps}) => (
                      <CollectionPreview key={id} {...otherCollectionsProps} />
                   ))
                }
-   </CollectionPreview>
+   </CollectionsOverviewContainer>
 );
 
 
