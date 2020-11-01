@@ -1,8 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import { Switch, Route,Redirect } from 'react-router-dom';
 import './App.css';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
+
+
+
 
 
 import HomePage from './pages/homepage/homepage.component';
@@ -18,11 +23,9 @@ import {setCurrentUser} from './redux/user/user.actions';
 import {selectCurrentUser} from './redux/user/user.selectors';
 
 
+
 class App extends React.Component {
- 
-
-
-  
+   
     unsubscribeFromAuth = null;
 
     componentDidMount() {

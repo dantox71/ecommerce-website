@@ -20,52 +20,49 @@ import {createStructuredSelector} from 'reselect';
 
 
 
-import './header.styles.scss';
+
+import {HeaderContainer,LogoContainer,OptionsContainer,OptionLink} from  './header.styles.jsx';
 
 const Header = ({currentUser,hidden}) => {
 
-   console.log(currentUser);
-   
-   
+  
    
    return (
-   <div className="header"> 
-      <Link className="logo-container" to="/">
-         <Logo className="logo" />
-      </Link>
+      <HeaderContainer>
+
+            <OptionLink className="logo-container" to="/">
+               <Logo className="logo" />
+            </OptionLink>
 
 
 
-      <div className="options">
-            <Link className="option" to="/shop">
-               SHOP
-            </Link>
+            <OptionsContainer>
+                  <OptionLink to="/shop">
+                     SHOP
+                  </OptionLink>
 
-            <Link className="option" to="/contact">
-               CONTACT
-            </Link>
-
-
-
-            {
-               currentUser ? 
-               <div className="option" onClick={() => auth.signOut()}>
-                  SIGN OUT
-               </div>
-               :
-               <Link className="option" to="/signin">
-                     SIGN IN
-               </Link>
-            }
-
-            <CartIcon />
+                  <OptionLink to="/contact">
+                     CONTACT
+                  </OptionLink>
 
 
+
+                  {
+                     currentUser ? 
+                     <OptionLink as="div" onClick={() => auth.signOut()}>
+                        SIGN OUT
+                     </OptionLink>
+                     :
+                     <OptionLink  to="/signin">
+                           SIGN IN
+                     </OptionLink>
+                  }
+
+                  <CartIcon />
+           </OptionsContainer>
 
             {hidden ? null : <CartDropdown />}
-            
-      </div>
-   </div>
+      </ HeaderContainer >
 )}
 
 
