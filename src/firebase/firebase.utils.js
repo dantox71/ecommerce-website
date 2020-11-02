@@ -3,11 +3,6 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 
-
-
-
-
-
 const config = {
     apiKey: "AIzaSyAVZkvUmeNEF3jtWj3y8QVWXsKoUtH_LZ4",
     authDomain: "ecommerce-project-d1bb7.firebaseapp.com",
@@ -38,13 +33,18 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
 
     const userRef = firestore.doc(`users/${userAuth.uid}`);
+    const collectionRef = firestore.collection('users');
 
 
     const snapShot = await userRef.get();
+    const collectionSnapshot = await collectionRef.get();
 
 
 
-    //Run only when user doesn't already exist
+
+
+
+
     if (!snapShot.exists) {
         const { displayName, email } = userAuth;
         const createdAt = new Date();
@@ -69,6 +69,49 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
     return userRef;
 }
 
+// Utility funtion that allows to add new collections and documents
+export const addCollectionAndDocuments = async(collectionKey, objectsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+
+    const batch = firestore.batch();
+
+
+    objectsToAdd.forEach(obj => {
+        const newDocRef = collectionRef.doc();
+
+        batch.set(newDocRef, obj);
+    });
+
+    return await batch.commit();
+
+}
+
+
+
+// This method takes in snapshot of collections colleciton as an argument and return an array of documents inside of this collection
+export const convertCollectionsSnapshotToMap = collections => {
+    const transformedCollection = collections.docs.map(doc => {
+        const {title, items} = doc.data();
+
+
+        return{
+            routeName:encodeURI(title.toLowerCase()),  
+            id:doc.id,
+            title,
+            items
+        };
+    });
+
+
+
+    return transformedCollection.reduce((accumulator,collection) => {
+         accumulator[collection.title.toLowerCase()] = collection;
+         return accumulator;
+    },{});
+
+
+
+};
 
 
 export default firebase;

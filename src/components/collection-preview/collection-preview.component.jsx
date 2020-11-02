@@ -9,8 +9,6 @@ import CollectionItem from '../collection-item/collection-item.component.jsx';
 
 const CollectionPreview = ({title,items}) => {
 
-
-   console.log(title,items);
    return(
       <CollectionPreviewContainer>
         <TitleContainer>{title.toUpperCase()}</TitleContainer>
