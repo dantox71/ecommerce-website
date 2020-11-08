@@ -1,10 +1,16 @@
 import ShopActionsTypes from './shop.types';
 
 
-const { UPDATE_COLLECTIONS } = ShopActionsTypes;
+const {
+    FETCH_COLLECTIONS_START,
+    FETCH_COLLECTIONS_SUCCESS,
+    FETCH_COLLECTIONS_FAILURE
+} = ShopActionsTypes;
 
 const INITIAL_STATE = {
-    collections: null
+    collections: null,
+    isFetching: false,
+    errorMessage: undefined
 }
 
 
@@ -14,14 +20,26 @@ const shopReducer = (state = INITIAL_STATE, action) => {
 
     switch (type) {
 
-
-        case UPDATE_COLLECTIONS:
+        case FETCH_COLLECTIONS_START:
             return {
                 ...state,
-                collections: payload
+                isFetching: true
             }
 
 
+        case FETCH_COLLECTIONS_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                collections: payload
+            }
+
+        case FETCH_COLLECTIONS_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                errorMessage: payload
+            }
 
 
         default:

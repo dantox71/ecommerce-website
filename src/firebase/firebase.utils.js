@@ -91,12 +91,12 @@ export const addCollectionAndDocuments = async(collectionKey, objectsToAdd) => {
 // This method takes in snapshot of collections colleciton as an argument and return an array of documents inside of this collection
 export const convertCollectionsSnapshotToMap = collections => {
     const transformedCollection = collections.docs.map(doc => {
-        const {title, items} = doc.data();
+        const { title, items } = doc.data();
 
 
-        return{
-            routeName:encodeURI(title.toLowerCase()),  
-            id:doc.id,
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
             title,
             items
         };
@@ -104,10 +104,10 @@ export const convertCollectionsSnapshotToMap = collections => {
 
 
 
-    return transformedCollection.reduce((accumulator,collection) => {
-         accumulator[collection.title.toLowerCase()] = collection;
-         return accumulator;
-    },{});
+    return transformedCollection.reduce((accumulator, collection) => {
+        accumulator[collection.title.toLowerCase()] = collection;
+        return accumulator;
+    }, {});
 
 
 
