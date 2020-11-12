@@ -1,6 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
-
 
 
 import {
@@ -18,12 +16,8 @@ import {toggleCartHidden} from '../../redux/cart/cart.actions';
 
 
 
-
-
-
 const CartDropdown = ({cartItems,history,...otherProps}) => {
    
-
    const {dispatch} = otherProps;  
    
    return(
