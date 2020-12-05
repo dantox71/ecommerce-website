@@ -8,7 +8,11 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import {signUpStart} from '../../redux/user/user.actions';
 
-import {SignUpContainer,SignUpTitle} from './sign-up.styles.jsx';
+import {
+   SignUpContainer,
+   SignUpTitle,
+   SignUpButton
+} from './sign-up.styles.jsx';
 
 
 
@@ -110,7 +114,7 @@ const SignUp = ({signUpStart}) => {
 
 
 
-               <CustomButton type="submit">SIGN UP</CustomButton>
+               <SignUpButton type="submit">SIGN UP</SignUpButton>
             </form>
          </SignUpContainer>
       )

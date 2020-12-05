@@ -12,6 +12,13 @@
 # production
 /build
 
+
+
+project_before_sagas
+
+
+.env
+
 # misc
 .DS_Store
 .env.local

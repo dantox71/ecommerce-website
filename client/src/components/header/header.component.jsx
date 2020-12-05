@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 
 
-import {auth} from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdownContainer from '../cart-dropdown/cart-dropdown.container';
 
@@ -25,9 +24,10 @@ const Header = ({currentUser,hidden,signOutStart}) => {
    return (
       <HeaderContainer>
 
-            <OptionLink className="logo-container" to="/">
+            <LogoContainer to='/'>
                <Logo className="logo" />
-            </OptionLink>
+            </LogoContainer>
+
 
 
 

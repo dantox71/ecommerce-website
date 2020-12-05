@@ -12,7 +12,8 @@ const buttonStyles = css`
    &:hover {
       background-color: white;
       color: black;
-      borderŁ1px solid black;
+      border:1px solid black;
+
    }
 `;
 

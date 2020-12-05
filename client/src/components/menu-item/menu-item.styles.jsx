@@ -1,8 +1,8 @@
-import styled,{css} from 'styled-components';
+import styled from 'styled-components';
 
 export const MenuItemContainer = styled.div`
       min-width: 30%;
-      height: 240px;
+      height: 400px;
       flex: 1 1 auto;
       display: flex;
       align-items: center;
@@ -12,17 +12,15 @@ export const MenuItemContainer = styled.div`
       overflow: hidden;
       &:hover {
          cursor: pointer;
-         & .background-image {
+         & > div {
             transform: scale(1.1);
-            transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+            transition: all 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+ 
          }
          & .content {
             opacity: 0.9;
          }
       }
-
-    
-
 
       &:first-child {
          margin-right: 7.5px;
@@ -30,6 +28,16 @@ export const MenuItemContainer = styled.div`
       &:last-child {
          margin-left: 7.5px;
       }
+
+
+
+      @media screen and (max-width:800px){
+         flex-direction:column;
+         height:200px;
+         width:100%;
+      }
+
+
 `;
 
 export const BackgroundImageContainer = styled.div`
@@ -52,6 +60,12 @@ export const ContentContainer = styled.div`
       background-color: white;
       opacity: 0.7;
       position: absolute;
+
+
+      @media screen and (max-width:800px){
+         width:40%;
+      }
+
 `;
 
 

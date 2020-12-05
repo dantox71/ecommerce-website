@@ -13,10 +13,26 @@ export const CheckoutPageContainer = styled.div`
       margin: 50px auto;
 
 
+
+
+
      button {
         margin-left: auto;
         margin-top: 50px;
       }
+
+      @media screen and (max-width:800px){
+            width:80%;
+      }
+
+
+
+      @media screen and (max-width:450px){
+            width:95%;
+      }
+
+
+
 
 `;
 
