@@ -1,52 +1,41 @@
-import React from 'react';
-
+import React from "react";
 
 import {
-   ErrorImageOverlay,
-   ErrorImageContainer,
-   ErrorImageText
-} from './error-boundary.styles';
+  ErrorImageOverlay,
+  ErrorImageContainer,
+  ErrorImageText,
+} from "./error-boundary.styles";
 
-class ErrorBoundary extends React.Component{
-   constructor(){
-      super();
+class ErrorBoundary extends React.Component {
+  constructor() {
+    super();
 
-      this.state = {
-         hasErrored:false
-      }
-   }
+    this.state = {
+      hasErrored: false,
+    };
+  }
 
+  // This will run if error occured, and set hasErrored flag to be true. The rest of the component will be aware that error occured
+  static getDerivedStateFromError(error) {
+    // process the error
+    return { hasErrored: true };
+  }
 
-   // This will run if error occured, and set hasErrored flag to be true. The rest of the component will be aware that error occured
-   static getDerivedStateFromError(error){
-      // process the error
-      return { hasErrored:true}   
-   }
+  componentDidCatch(error, info) {
+    console.log(error);
+  }
 
-
-
-   componentDidCatch(error, info){
-      console.log(error);
-   }
-
-
-   render(){
-      if(this.state.hasErrored){
-         return (
-            <ErrorImageOverlay>
-               <ErrorImageContainer imageUrl={'https://i.imgur.com/qIufhof.png'} />
-               <ErrorImageText>Sorry this page is broken</ErrorImageText>
-            </ErrorImageOverlay>
-         )
-      }
-
-
-      return this.props.children;
-   }
+  render() {
+    if (this.state.hasErrored) {
+      return (
+        <ErrorImageOverlay>
+          <ErrorImageContainer imageUrl={"https://i.imgur.com/qIufhof.png"} />
+          <ErrorImageText>Sorry this page is broken</ErrorImageText>
+        </ErrorImageOverlay>
+      );
+    }
+    return this.props.children;
+  }
 }
 
-
 export default ErrorBoundary;
-
-
-
